@@ -1,0 +1,23 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
+public class Main {
+    public static void main(String[] args) {
+        // The date string in the format "dd/MM/yyyy"
+        String dateString = "05/08/2024"; // Example date
+
+        // Define the formatter for the given format
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        try {
+            // Parse the date string to a LocalDate object
+            LocalDate date = LocalDate.parse(dateString, formatter);
+            
+            // Display the LocalDate object
+            System.out.println("Parsed Date: " + date);
+        } catch (DateTimeParseException e) {
+            System.out.println("Invalid date format");
+        }
+    }
+}

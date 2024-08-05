@@ -1,0 +1,151 @@
+In Java, built-in functionalities are features and methods provided by the Java standard library that you can use to perform common tasks without having to write custom code. These functionalities are spread across various classes and interfaces in the Java standard library. Here are some important categories of built-in functionalities and examples of each:
+
+**1. Collections Framework**
+
+- **List**: A collection that allows duplicate elements and maintains insertion order.
+  - **Examples**: `ArrayList`, `LinkedList`
+  - **Common Methods**: `add()`, `remove()`, `get()`, `size()`, `contains()`
+
+- **Set**: A collection that does not allow duplicate elements and does not maintain order.
+  - **Examples**: `HashSet`, `LinkedHashSet`, `TreeSet`
+  - **Common Methods**: `add()`, `remove()`, `contains()`, `size()`
+
+- **Map**: A collection that maps keys to values, where each key is unique.
+  - **Examples**: `HashMap`, `TreeMap`, `LinkedHashMap`
+  - **Common Methods**: `put()`, `get()`, `remove()`, `containsKey()`, `size()`
+
+- **Queue**: A collection designed for holding elements prior to processing.
+  - **Examples**: `LinkedList`, `PriorityQueue`
+  - **Common Methods**: `offer()`, `poll()`, `peek()`
+
+### **2. Streams API**
+
+- **Streams**: Provide a way to process sequences of elements (collections) in a functional style.
+  - **Examples**: `filter()`, `map()`, `reduce()`, `collect()`
+  - **Usage**: Supports operations such as filtering, mapping, and reducing elements of a collection.
+
+  ```java
+  import java.util.Arrays;
+  import java.util.List;
+
+  public class StreamExample {
+      public static void main(String[] args) {
+          List<String> names = Arrays.asList("Alice", "Bob", "Charlie", "Dave");
+
+          names.stream()
+               .filter(name -> name.startsWith("C"))
+               .forEach(System.out::println); // Outputs "Charlie"
+      }
+  }
+  ```
+
+### **3. File I/O**
+
+- **File Handling**: Provides classes for reading from and writing to files.
+  - **Examples**: `File`, `FileReader`, `FileWriter`, `BufferedReader`, `BufferedWriter`
+  - **Common Methods**: `read()`, `write()`, `close()`, `exists()`
+
+  ```java
+  import java.io.BufferedWriter;
+  import java.io.FileWriter;
+  import java.io.IOException;
+
+  public class FileWriteExample {
+      public static void main(String[] args) {
+          try (BufferedWriter writer = new BufferedWriter(new FileWriter("example.txt"))) {
+              writer.write("Hello, World!");
+          } catch (IOException e) {
+              e.printStackTrace();
+          }
+      }
+  }
+  ```
+
+### **4. Concurrency Utilities**
+
+- **Threads**: Provides classes and interfaces for creating and managing threads.
+  - **Examples**: `Thread`, `Runnable`, `ExecutorService`, `Callable`
+  - **Common Methods**: `start()`, `run()`, `submit()`, `invokeAll()`
+
+  ```java
+  import java.util.concurrent.ExecutorService;
+  import java.util.concurrent.Executors;
+
+  public class ThreadPoolExample {
+      public static void main(String[] args) {
+          ExecutorService executor = Executors.newFixedThreadPool(2);
+          
+          executor.submit(() -> System.out.println("Task 1"));
+          executor.submit(() -> System.out.println("Task 2"));
+          
+          executor.shutdown();
+      }
+  }
+  ```
+
+### **5. Math and Utility Classes**
+
+- **Math**: Provides methods for performing basic numeric operations.
+  - **Examples**: `Math.sqrt()`, `Math.pow()`, `Math.max()`
+  - **Common Methods**: `abs()`, `round()`, `random()`
+
+  ```java
+  public class MathExample {
+      public static void main(String[] args) {
+          double squareRoot = Math.sqrt(16);
+          System.out.println("Square root of 16: " + squareRoot); // Outputs 4.0
+      }
+  }
+  ```
+
+- **Utility**: Provides various utility methods.
+  - **Examples**: `Arrays`, `Collections`, `Objects`
+  - **Common Methods**: `Arrays.sort()`, `Collections.shuffle()`, `Objects.requireNonNull()`
+
+  ```java
+  import java.util.Arrays;
+
+  public class ArraysExample {
+      public static void main(String[] args) {
+          int[] numbers = {3, 1, 4, 1, 5};
+          Arrays.sort(numbers);
+          System.out.println(Arrays.toString(numbers)); // Outputs [1, 1, 3, 4, 5]
+      }
+  }
+  ```
+
+### **6. String Handling**
+
+- **String**: Provides methods for manipulating and querying strings.
+  - **Examples**: `String.length()`, `String.substring()`, `String.replace()`
+  - **Common Methods**: `trim()`, `toUpperCase()`, `split()`
+
+  ```java
+  public class StringExample {
+      public static void main(String[] args) {
+          String text = " Hello, World! ";
+          String trimmedText = text.trim();
+          System.out.println(trimmedText); // Outputs "Hello, World!"
+      }
+  }
+  ```
+
+### **7. Exception Handling**
+
+- **Exception**: Provides mechanisms for handling errors and exceptional conditions.
+  - **Examples**: `try`, `catch`, `finally`, `throw`, `throws`
+  - **Common Exceptions**: `IOException`, `NullPointerException`, `ArithmeticException`
+
+  ```java
+  public class ExceptionExample {
+      public static void main(String[] args) {
+          try {
+              int result = 10 / 0;
+          } catch (ArithmeticException e) {
+              System.out.println("Error: " + e.getMessage());
+          }
+      }
+  }
+  ```
+
+These built-in functionalities are essential for everyday programming tasks and significantly ease the development process by providing ready-to-use, well-tested methods and classes.
